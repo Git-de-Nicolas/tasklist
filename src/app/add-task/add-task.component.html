@@ -1,0 +1,28 @@
+<div class="container">
+  <form (submit)="createTask()">
+
+    <h4 class="h4 text-center"> Formulaire de création d'une tâche : </h4>
+
+    <div class="form-group w-75 mx-auto">
+
+      <label> Nom de la tâche : </label>
+
+      <input type="text " name="name" class="form-control" [(ngModel)]="">
+
+    </div>
+
+
+    <div class="form-group w-75 mx-auto">
+
+      <label > Description de la tâche : </label>
+
+      <input type="text" name="adress" class="form-control" >
+
+    </div>
+
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<router-outlet></router-outlet>
+<div class="container">
+  <h1 *ngIf="!tasks" class="h1 text-center"> chargement en cours </h1>
+
+  <a routerLink="/add-task" class="btn-dark"> Ajouter une tâche</a>
+
+  <ng-container *ngIf="tasks">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Nom de la tâche :</th>
+        <th scope="col"> Description de la tâche</th>
+        <th scope="col"> Terminée</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks">
+        <td><a routerLink="task-detail/:id">{{task.name}}</a></td>
+        <td> {{task.description ? '+ de détails' : ''}}</td>
+        <td> {{task.completed ? '✅' : '❌'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>
