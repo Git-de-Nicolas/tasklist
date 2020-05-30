@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../entity/Post.entity";
 import {PostServiceService} from "../service/post-service.service";
 

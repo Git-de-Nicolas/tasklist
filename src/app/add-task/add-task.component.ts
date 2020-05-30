@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from "../entity/Task.entity";
 import {TaskServiceService} from "../service/task-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-task',
@@ -9,23 +10,26 @@ import {TaskServiceService} from "../service/task-service.service";
 })
 export class AddTaskComponent implements OnInit {
 
-  tasks: Task[];
+  id: number;
+  task: Task[];
+  newTask = new Task();
 
-  constructor(private taskService: TaskServiceService) {
+  constructor(private taskService: TaskServiceService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe(value => {
-      this.tasks = value;
-    });
-
+    this.taskService.getTasks().subscribe(value => this.task = value);
   }
 
   createTask() {
-    const newTask = new Task();
+
     this.taskService
-      .createTask(newTask).subscribe(() => {
+      .createTask(this.newTask).subscribe(() => {
       // Requête terminée, entitée crée
+
+      alert('tâche ajoutée ! redirection vers page accueil')
+      this.router.navigate(['home'])
     });
   }
 

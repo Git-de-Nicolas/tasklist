@@ -1,1 +1,42 @@
-<p>task-detail works!</p>
+<h3 class="h3 text-center" *ngIf="!data"> Chargement en cours </h3>
+
+<ng-container *ngIf="data">
+  <h2 class="h2 text-center"> Page détail de la tâche : " {{data.name}} "</h2>
+
+
+  <div class="container">
+    <form (submit)="modifyTask()"> //undefined
+
+      <h4 class="h4 text-center"> Formulaire de modification d'une tâche </h4>
+      <div class="form-group w-75 mx-auto">
+        <label> <b> Nom de la tâche : </b> </label>
+        <input type="text " name="name" class="form-control" placeholder="{{data.name}}"
+               [(ngModel)]="data.name">
+      </div>
+
+
+      <div class="form-group w-75 mx-auto">
+        <label> <b>Description de la tâche : </b></label>
+        <input type="text" name="description" class="form-control" placeholder="{{data.description}}"
+               [(ngModel)]="data.description">
+      </div>
+
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary"> Modifier</button>
+      </div>
+    </form>
+  </div>
+</ng-container>
+
+<!--
+Cette page affiche un formulaire permettant d’afficher et de modifier les champs suivant d’une tache :
+- son nom (champs name)
+- sa description (champs description)
+En validant le formulaire, la tache est mise à jour sur le serveur à l’aide de la requête
+PUT http://meshwork.tech/deploy/api/public/task/:id en passant l’entité Task en paramètre.
+
+this.http.put(`http://meshwork.tech/deploy/api/public/task/${task.id}`, task);
+
+Une fois la requête ajouté, l’utilisateur est redirigé vers la route /
+-->
